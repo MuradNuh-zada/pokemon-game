@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", serif;
+}
+
+main {
+    background-color: rgba(249, 244, 238, 0.627);
+}
+
+.container {
+    max-width: 1140px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pokemon-head,
+.pokemon-text {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.pokemon-text {
+    font-size: 20px;
+}
+
+.user-pokemons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+@keyframes pokemons {
+    0% {
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        -o-transform: scale(0.95);
+    }
+
+    50% {
+        transform: scale(1.01);
+        -webkit-transform: scale(1.01);
+        -moz-transform: scale(1.01);
+        -ms-transform: scale(1.01);
+        -o-transform: scale(1.01);
+    }
+
+    100% {
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -moz-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        -o-transform: scale(0.95);
+    }
+}
+
+.user-pokemons img {
+    animation: pokemons 2s infinite;
+    -webkit-animation: pokemons 2s infinite;
+    width: 300px;
+    background-color: beige;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    cursor: pointer;
+}
+
+.final-game {
+    display: none;
+    justify-content: space-evenly;
+    margin-block: 45px;
+    text-align: center;
+}
+
+.final-game .user-selected,
+.final-game .comp-selected {
+    width: 400px;
+}
+
+.final-game .user-selected p,
+.final-game .comp-selected p {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.final-game .user-selected img,
+.final-game .comp-selected img {
+    width: 100%;
+    background-color: beige;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.alert-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 191, 0, 0.932);
+    padding: 20px 60px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+.alert-message p {
+    font-size: 55px;
+    color: #fff;
+}
+
+.alert-message span {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: rgba(255, 0, 0, 0.74);
+    font-size: 25px;
+    padding: 6px 12px;
+    border-top-right-radius: 25px;
+    cursor: pointer;
+}
+
+.alert-message span:hover {
+    background-color: rgb(255, 241, 153);
+}
+
+.alert-message .alert-buttons {
+    display: none;
+    margin-top: 15px;
+}
+
+.alert-message button {
+    border: none;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.alert-message .start-game {
+    background-color: rgba(6, 209, 6, 0.862);
+}
+
+.alert-message .exit-game {
+    background-color: rgba(255, 0, 0, 0.74);
+}
