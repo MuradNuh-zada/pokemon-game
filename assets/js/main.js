@@ -4,13 +4,16 @@ let computerPokemonDOM = document.querySelector(".comp-selected img"),
   finalGame = document.querySelector(".final-game"),
   userLifeDOM = document.querySelector(".pokemon-text span"),
   alertMessage = document.querySelector(".alert-message"),
+  overlay = document.querySelector(".overlay"),
   alertMessageExit = document.querySelector(".alert-message span"),
   alertMessageText = document.querySelector(".alert-message p"),
   alertButtons = document.querySelector(".alert-buttons"),
   startGame = document.querySelector(".start-game"),
   exitGame = document.querySelector(".exit-game"),
+  btns = document.querySelector(".btns"),
   userScoreDOM = document.querySelector(".user-score"),
-  computerScoreDOM = document.querySelector(".computer-score");
+  computerScoreDOM = document.querySelector(".computer-score"),
+  drawScoreDOM = document.querySelector(".draw-score");
 
 const computerPokemons = [
   {
@@ -62,6 +65,8 @@ function pokemonGame() {
   userScoreDOM.innerHTML = userScore;
   let computerScore = 0;
   computerScoreDOM.innerHTML = computerScore;
+  let drawScore = 0;
+  drawScoreDOM.innerHTML = drawScore;
 
   startGame.removeEventListener("click", resetGame);
   startGame.addEventListener("click", resetGame);
@@ -75,14 +80,18 @@ function pokemonGame() {
 
     finalGame.style.display = "flex";
     alertMessage.style.display = "block";
-
+    overlay.style.display = "block";
     alertMessageExit.addEventListener("click", function () {
       alertMessage.style.display = "none";
+      overlay.style.display = "none";
+      btns.style.display = "none";
     });
 
-    let alertTime = setTimeout(() => {
+    overlay.addEventListener("click", function () {
       alertMessage.style.display = "none";
-    }, 3000);
+      overlay.style.display = "none";
+      btns.style.display = "none";
+    });
 
     let randomPokemonID = Math.floor(Math.random() * computerPokemons.length),
       userSelectedImg = params.target.pokemon.pokemonImage,
@@ -101,7 +110,8 @@ function pokemonGame() {
 
     if (userSelectPokemonName == computerSelectPokemonName) {
       alertMessageText.innerText = "Draw!";
-      alertTime;
+      drawScore++;
+      drawScoreDOM.innerHTML = drawScore;
     } else if (
       (userSelectPokemonName == water.toUpperCase() &&
         computerSelectPokemonName == fire.toUpperCase()) ||
@@ -115,13 +125,18 @@ function pokemonGame() {
       userScore++;
       userScoreDOM.innerHTML = userScore;
       alertMessageText.innerText = "You win!";
-      alertTime;
       if (userScore == 5) {
         alertMessageText.innerText = "You won the game! Shall we start again?";
         alertButtons.style.display = "block";
-        clearTimeout(alertTime);
         pokemonsButton.forEach((item) => {
           item.style.pointerEvents = "none";
+        });
+        alertMessageExit.addEventListener("click", function () {
+          btns.style.display = "flex";
+        });
+
+        overlay.addEventListener("click", function () {
+          btns.style.display = "flex";
         });
       }
     } else {
@@ -132,13 +147,18 @@ function pokemonGame() {
       computerScore++;
       computerScoreDOM.innerHTML = computerScore;
       alertMessageText.innerText = "You lost a life!";
-      alertTime;
       if (userLife <= 0 || computerScore == 5) {
         alertMessageText.innerText = "You lose game! Shall we start again?";
         alertButtons.style.display = "block";
-        clearTimeout(alertTime);
         pokemonsButton.forEach((item) => {
           item.style.pointerEvents = "none";
+        });
+        alertMessageExit.addEventListener("click", function () {
+          btns.style.display = "flex";
+        });
+
+        overlay.addEventListener("click", function () {
+          btns.style.display = "flex";
         });
       }
     }
@@ -158,12 +178,16 @@ function pokemonGame() {
     userScoreDOM.innerHTML = userScore;
     computerScore = 0;
     computerScoreDOM.innerHTML = computerScore;
+    drawScore = 0;
+    drawScoreDOM.innerHTML = drawScore;
     pokemonsButton.forEach((item) => {
       item.style.pointerEvents = "auto";
     });
     alertMessageExit.style.display = "block";
     alertButtons.style.display = "none";
     alertMessage.style.display = "none";
+    overlay.style.display = "none";
+    btns.style.display = "none";
   }
 
   pokemonsButton.forEach((item) => {

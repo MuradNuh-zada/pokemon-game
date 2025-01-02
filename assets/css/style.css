@@ -30,9 +30,10 @@ main {
 
 .user-pokemons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 25px;
+    margin-block: 35px;
 }
 
 @keyframes pokemons {
@@ -72,6 +73,15 @@ main {
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
     cursor: pointer;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.user-pokemons img:hover {
+    background-color: rgba(244, 244, 149, 0.539);
 }
 
 .final-game {
@@ -86,8 +96,7 @@ main {
     width: 400px;
 }
 
-.final-game .user-selected p,
-.final-game .comp-selected p {
+.final-game p {
     font-size: 25px;
     margin-bottom: 15px;
 }
@@ -116,6 +125,7 @@ main {
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
+    z-index: 3;
 }
 
 .alert-message p {
@@ -144,7 +154,8 @@ main {
     margin-top: 15px;
 }
 
-.alert-message button {
+.alert-message button,
+.btns button {
     border: none;
     border-radius: 25px;
     -webkit-border-radius: 25px;
@@ -152,14 +163,37 @@ main {
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
     padding: 10px 20px;
+
     color: #fff;
     cursor: pointer;
 }
 
-.alert-message .start-game {
+.start-game {
     background-color: rgba(6, 209, 6, 0.862);
 }
 
-.alert-message .exit-game {
+.exit-game {
     background-color: rgba(255, 0, 0, 0.74);
+}
+
+.btns {
+    display: none ;
+    justify-content: end;
+    gap: 10px;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Tündləşmiş arxa fon */
+    backdrop-filter: blur(5px);
+    /* Blur effekti */
+    z-index: 1;
+    display: none;
+    /* Başlangıçda gizli */
 }
